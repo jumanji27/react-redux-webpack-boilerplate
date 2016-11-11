@@ -4,6 +4,8 @@ const extractTextPlugin = require('extract-text-webpack-plugin')
 
 
 module.exports = {
+  devtool: 'source-map',
+
   entry: [
     'webpack-hot-middleware/client',
     './client/src/index'
@@ -17,7 +19,8 @@ module.exports = {
 
   plugins: [
     new extractTextPlugin('index.css'),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
 
   module: {
