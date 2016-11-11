@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import { addTask, addTaskSuccess } from './actions.js'
+import { addTask, addTaskSuccess } from './actions'
 
-import * as types from './constants.js'
+import * as types from './constants'
 
 import Button from '../../ui-kit/button'
 
 import Tasks from '../../components/tasks'
 
-import './index.scss'
+import './index.css'
 
 
 const mapStateToProps = (state) => ({
@@ -27,8 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-
-let Home = ({ tasks, addTask }) => {
+const Home = ({ tasks, addTask }) => {
   if (tasks) {
     return (
       <div className='home'>

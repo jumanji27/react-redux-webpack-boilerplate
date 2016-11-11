@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import tasks from '../../components/tasks/reducers.js'
+import tasks from '../../components/tasks/reducers'
 
 
 const reducers =

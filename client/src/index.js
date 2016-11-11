@@ -5,9 +5,9 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { combineReducers } from 'redux'
 
 import Home from './pages/home'
-import homeReducers from './pages/home/reducers.js'
+import homeReducers from './pages/home/reducers'
 
-import './index.scss'
+import './index.css'
 
 
 const reducers =

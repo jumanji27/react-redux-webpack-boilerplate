@@ -6,8 +6,8 @@
   "version": "0.0.1",
 
   "browser_action": {
-    "default_icon": "img/icon.png",
-    "default_popup": "main.html",
+    "default_icon": "img/fav/icon.png",
+    "default_popup": "index.html",
     "default_title": "Gmail Cleaner"
   }
 }
