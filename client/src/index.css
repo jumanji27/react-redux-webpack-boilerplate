@@ -3,7 +3,7 @@ body {
 }
 
 
-.root {
+:global .root {
   margin: 20px;
   width: 200px;
   height: 50px;

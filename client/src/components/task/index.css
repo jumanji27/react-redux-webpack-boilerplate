@@ -1,4 +1,4 @@
-.task {
+:local .task {
   &:before {
     content: '';
     display: inline-block;
@@ -7,5 +7,9 @@
     margin: 0 5px 0 0;
     background: #000;
     border-radius: 5px;
+  }
+
+  .icon {
+    border: 5px solid #000;
   }
 }

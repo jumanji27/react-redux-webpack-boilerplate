@@ -1,13 +1,11 @@
 const webpack = require('webpack')
 const path = require('path')
 const extractTextPlugin = require('extract-text-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 
 
 module.exports = {
-  devtool: 'source-map',
-
   entry: [
-    'webpack-hot-middleware/client',
     './client/src/index'
   ],
 
@@ -18,23 +16,32 @@ module.exports = {
   },
 
   plugins: [
-    new extractTextPlugin('index.css'),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new extractTextPlugin('index.css')
   ],
 
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel', 'webpack-module-hot-accept'],
-        include: path.resolve(__dirname, './src'),
+        loaders: ['babel'],
+        include: path.resolve(__dirname, '../../src'),
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
+          'postcss',
+          'less'
+        ]
       }
     ]
-  }
+  },
+
+  postcss: () => [
+    autoprefixer({
+      browsers: 'last 5 versions'
+    })
+  ]
 };

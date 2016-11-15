@@ -9,7 +9,7 @@ import Button from '../../ui-kit/button'
 
 import Tasks from '../../components/tasks'
 
-import './index.css'
+import styles from './index.css'
 
 
 const mapStateToProps = (state) => ({
@@ -30,14 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
 const Home = ({ tasks, addTask }) => {
   if (tasks) {
     return (
-      <div className='home'>
+      <div className={styles.home}>
         <Button action={addTask} text='Add new task' />
         <Tasks tasks={tasks} />
       </div>
     )
   } else {
     return (
-      <div className='home'>
+      <div className={styles.home}>
         <Button action={addTask} text='Add new task' />
       </div>
     )

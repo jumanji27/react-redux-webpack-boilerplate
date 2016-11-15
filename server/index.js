@@ -1,31 +1,11 @@
 const path = require('path')
-const webpack = require('webpack')
 const express = require('express')
-const devMiddleware = require('webpack-dev-middleware')
-const hotMiddleware = require('webpack-hot-middleware')
 
-const config = require('./../client/webpack.config')
+const tasksData = require('./data/tasks')
 
-const tasksData = require('./data/tasks.json')
+const hotReload = require('./hot-reload')
 
 const app = express();
-
-
-const compiler = webpack(config);
-
-app.use(
-  devMiddleware(
-    compiler,
-    {
-      publicPath: config.output.publicPath,
-      historyApiFallback: true,
-    }
-  )
-);
-
-app.use(
-  hotMiddleware(compiler)
-);
 
 
 app.get(
@@ -35,12 +15,16 @@ app.get(
   }
 );
 
+
 app.get(
   '/api/tasks',
   (req, res) => {
     res.send(tasksData);
   }
 );
+
+
+hotReload(app);
 
 
 app.listen(

@@ -1,10 +1,15 @@
 import React from 'react'
 
-import './index.css'
+import styles from './index.css'
 
 
 export default class Task extends React.Component {
   render() {
-    return <div className='task'>{this.props.name}</div>
+    return (
+      <div className={styles.task}>
+        <span className={styles.icon}></span>
+        {this.props.name}
+      </div>
+    )
   }
 }
