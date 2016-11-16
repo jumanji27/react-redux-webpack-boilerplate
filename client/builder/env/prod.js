@@ -1,8 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 const autoprefixer = require('autoprefixer')
-const writeFilePlugin = require('write-file-webpack-plugin')
-const webpackUglifyJsPlugin = require('webpack-uglify-js-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const extractTextPlugin = require('extract-text-webpack-plugin')
 
 
 module.exports = {
@@ -17,19 +17,15 @@ module.exports = {
   },
 
   plugins: [
-    new writeFilePlugin(),
-    new webpackUglifyJsPlugin({
-      cacheFolder: path.resolve(__dirname, '../../public/'),
-      debug: true,
-      minimize: true,
-      sourceMap: false,
-      output: {
-        comments: false
-      },
-      compressor: {
-        warnings: false
+    new htmlWebpackPlugin({
+      template: path.resolve(__dirname, '../../../client/src/index.html')
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
       }
-    })
+    }),
+    new extractTextPlugin('index.css')
   ],
 
   module: {
@@ -42,13 +38,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders:
+        loader: extractTextPlugin.extract(
+          'style',
           [
-            'style',
-            'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
+            'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]&-minimize',
             'postcss',
             'less'
           ]
+        )
       }
     ]
   },
