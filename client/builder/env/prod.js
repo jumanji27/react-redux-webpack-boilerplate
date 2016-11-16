@@ -1,7 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
-const extractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const writeFilePlugin = require('write-file-webpack-plugin')
+const webpackUglifyJsPlugin = require('webpack-uglify-js-plugin')
 
 
 module.exports = {
@@ -10,13 +11,25 @@ module.exports = {
   ],
 
   output: {
-    path: '/',
+    path: path.resolve(__dirname, '../../public'),
     filename: 'index.js',
     publicPath: '/'
   },
 
   plugins: [
-    new extractTextPlugin('index.css')
+    new writeFilePlugin(),
+    new webpackUglifyJsPlugin({
+      cacheFolder: path.resolve(__dirname, '../../public/'),
+      debug: true,
+      minimize: true,
+      sourceMap: false,
+      output: {
+        comments: false
+      },
+      compressor: {
+        warnings: false
+      }
+    })
   ],
 
   module: {
@@ -29,12 +42,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
-          'postcss',
-          'less'
-        ]
+        loaders:
+          [
+            'style',
+            'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
+            'postcss',
+            'less'
+          ]
       }
     ]
   },

@@ -1,4 +1,4 @@
-import * as types from '../../pages/home/constants.js'
+import * as types from '../../constants'
 
 
 const tasks = (state = [], action) => {

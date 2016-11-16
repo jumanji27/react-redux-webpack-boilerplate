@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-import { addTask, addTaskSuccess } from './actions'
+import { addTask, addTaskSuccess } from '../../components/tasks/actions'
 
-import * as types from './constants'
+import * as types from '../../constants'
 
 import Button from '../../ui-kit/button'
 
@@ -27,12 +27,12 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-const Home = ({ tasks, addTask }) => {
+const Home = ({tasks, addTask}) => {
   if (tasks) {
     return (
       <div className={styles.home}>
         <Button action={addTask} text='Add new task' />
-        <Tasks tasks={tasks} />
+        <Tasks />
       </div>
     )
   } else {
@@ -42,14 +42,6 @@ const Home = ({ tasks, addTask }) => {
       </div>
     )
   }
-}
-
-Home.propTypes = {
-  tasks: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string
-  })),
-  addTask: PropTypes.func.isRequired
 }
 
 

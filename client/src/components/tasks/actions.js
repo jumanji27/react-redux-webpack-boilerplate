@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import * as types from './constants'
+import * as types from '../../constants'
 
 
 export const addTask = () => ({

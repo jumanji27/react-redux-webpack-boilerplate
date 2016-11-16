@@ -1,16 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Task from '../task'
 
 
-export default class Tasks extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.tasks.map(todo =>
-          <Task key={todo.id} name={todo.name} />
-        )}
-      </div>
-    )
-  }
+const mapStateToProps = (state) => ({
+  tasks: state.home.tasks
+})
+
+const Tasks = ({tasks}) => {
+  return (
+    <div>
+      {tasks.map(todo =>
+        <Task key={todo.id} name={todo.name} />
+      )}
+    </div>
+  )
 }
+
+
+export default connect(mapStateToProps)(Tasks)

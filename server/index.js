@@ -5,6 +5,7 @@ const tasksData = require('./data/tasks')
 
 const hotReload = require('./hot-reload')
 
+
 const app = express();
 
 
@@ -19,12 +20,19 @@ app.get(
 app.get(
   '/api/tasks',
   (req, res) => {
-    res.send(tasksData);
+    setTimeout(
+      () => {
+        res.send(tasksData);
+      },
+      3000
+    )
   }
 );
 
 
-hotReload(app);
+if (process.env.NODE_ENV === 'development') {
+  hotReload(app);
+}
 
 
 app.listen(

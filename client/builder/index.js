@@ -2,6 +2,9 @@ const devEnv = require('./env/dev')
 const prodEnv = require('./env/prod')
 
 
-module.exports = (env) => {
-  return env === 'prod' ? prodEnv : devEnv;
+const getEnv = () => {
+  return process.env.NODE_ENV === 'production' ? prodEnv : devEnv;
 }
+
+
+module.exports = getEnv()
