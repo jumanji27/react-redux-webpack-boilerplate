@@ -27,7 +27,11 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel', 'webpack-module-hot-accept', 'react-hot-loader/webpack'],
+        loaders: [
+          'babel?presets[]=es2015&presets[]=react',
+          'webpack-module-hot-accept',
+          'react-hot-loader/webpack'
+        ],
         include: path.resolve(__dirname, '../../src'),
         exclude: /node_modules/
       },

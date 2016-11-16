@@ -32,20 +32,21 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loaders: ['babel?presets[]=es2015&presets[]=react'],
         include: path.resolve(__dirname, '../../src'),
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: extractTextPlugin.extract(
-          'style',
-          [
-            'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]&-minimize',
-            'postcss',
-            'less'
-          ]
-        )
+        loader:
+          extractTextPlugin.extract(
+            'style',
+            [
+              'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]&-minimize',
+              'postcss',
+              'less'
+            ]
+          )
       }
     ]
   },
