@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const htmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
@@ -15,6 +16,9 @@ module.exports = {
   },
 
   plugins: [
+    new htmlWebpackPlugin({
+      template: path.resolve(__dirname, '../../../client/src/index.html')
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
