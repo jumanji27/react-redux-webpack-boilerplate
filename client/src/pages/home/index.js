@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import { addTask, addTaskSuccess } from '../../components/tasks/actions'
 
@@ -28,17 +29,26 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const Home = ({tasks, addTask}) => {
-  if (tasks) {
+  const currentTask = _.last(tasks);
+
+  if (currentTask && !currentTask.loading) {
     return (
       <div className={styles.home}>
-        <Button action={addTask} text='Add new task' />
+        <Button action={addTask} disabled={false} text='Add new task' />
+        <Tasks />
+      </div>
+    )
+  } else if (currentTask) {
+    return (
+      <div className={styles.home}>
+        <Button action={addTask} disabled={true} text='Add new task' />
         <Tasks />
       </div>
     )
   } else {
     return (
       <div className={styles.home}>
-        <Button action={addTask} text='Add new task' />
+        <Button action={addTask} disabled={false} text='Add new task' />
       </div>
     )
   }
