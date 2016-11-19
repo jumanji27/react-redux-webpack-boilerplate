@@ -31,27 +31,16 @@ const mapDispatchToProps = (dispatch) => ({
 const Home = ({tasks, addTask}) => {
   const currentTask = _.last(tasks);
 
-  if (currentTask && !currentTask.loading) {
-    return (
-      <div className={styles.home}>
-        <Button action={addTask} disabled={false} text='Add new task' />
-        <Tasks />
-      </div>
-    )
-  } else if (currentTask) {
-    return (
-      <div className={styles.home}>
-        <Button action={addTask} disabled={true} text='Add new task' />
-        <Tasks />
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.home}>
-        <Button action={addTask} disabled={false} text='Add new task' />
-      </div>
-    )
-  }
+  return (
+    <div className={styles.home}>
+      <Button
+        action={addTask}
+        disabled={currentTask && currentTask.loading ? true : false}
+        text='Add new task'
+      />
+      {currentTask ? <Tasks /> : null}
+    </div>
+  )
 }
 
 

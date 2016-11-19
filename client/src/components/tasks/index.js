@@ -11,9 +11,9 @@ const mapStateToProps = (state) => ({
 const Tasks = ({tasks}) => {
   return (
     <div>
-      {tasks.map((task) => (
+      {tasks.map((task) => {
         !task.loading ? <Task key={task.id} name={task.name} /> : null
-      ))}
+      })}
     </div>
   )
 }
