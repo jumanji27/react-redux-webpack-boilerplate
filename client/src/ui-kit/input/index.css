@@ -1,0 +1,16 @@
+.input {
+  float: left;
+  width: 100px;
+  font: 20px UbuntuMedium;
+  letter-spacing: -1px;
+  background: #f9f9fa;
+  text-align: center;
+  border: 1px solid #d9dade;
+  padding: 6px 3px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+}

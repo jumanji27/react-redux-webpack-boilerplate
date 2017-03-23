@@ -1,0 +1,10 @@
+  {
+  "API": "",
+  "pusher": {
+    "key": "xae2vohKahfigheishoo",
+    "host": "ws.carprice.ru"
+  },
+  "hug": "https://hug.carprice.ru",
+  "monolith": "https://dealer.carprice.ru",
+  "googleAnalyticsID": "UA-51546404-4"
+}

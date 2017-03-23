@@ -1,4 +1,46 @@
-button {
-  padding: 10px;
-  border-radius: 10px;
+.button {
+  float: left;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 3px;
+
+  &:hover {
+    background: darken(#fff, 10%);
+  }
+
+  &.button__success {
+    background: #209b55;
+    color: #fff;
+
+    &:hover {
+      background: darken(#209b55, 10%);
+    }
+  }
+
+  &.button__hollow {
+    color: #209b55;
+    border: 1px solid #209b55;
+
+    &:hover {
+      background: #209b55;
+      color: #fff;
+    }
+
+    &:disabled:hover {
+      background: #fff;
+      color: #209b55;
+    }
+  }
+
+  &:disabled {
+    opacity: .6;
+    cursor: default;
+
+    &:hover {
+      background: #209b55;
+    }
+  }
 }

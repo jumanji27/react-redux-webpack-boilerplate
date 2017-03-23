@@ -1,10 +1,8 @@
 {
   "manifest_version": 2,
-
   "name": "Gmail Cleaner",
   "description": "Cleaner for Gmail",
-  "version": "0.0.1",
-
+  "version": "1117.1",
   "browser_action": {
     "default_icon": "img/fav/icon.png",
     "default_popup": "index.html",

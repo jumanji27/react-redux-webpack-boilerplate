@@ -1,0 +1,41 @@
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #edeff5;
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 56px;
+    height: 56px;
+    border: 8px solid #209b55;
+    border-right-color: transparent;
+    margin: -28px 0 0 -28px;
+    border-radius: 50%;
+    animation: spinner-rotate 1s linear infinite;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 33px;
+      width: 8px;
+      height: 8px;
+      background: #209b55;
+      border-radius: 50%;
+    }
+  }
+
+  @keyframes spinner-rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
