@@ -18,3 +18,7 @@ Dev server:
 Production:
 
     yarn build
+
+Docker
+
+    docker build -t dealer-front -f env/Dockerfile .
