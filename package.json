@@ -1,6 +1,6 @@
 {
   "name": "react-redux-webpack-boilerplate",
-  "description": "My current boilerplate",
+  "description": "Our current boilerplate",
   "private": true,
   "engines": {
     "node": "6.0.0"

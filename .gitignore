@@ -1,6 +1,9 @@
 .DS_Store
-
+.idea
 node_modules/
+
+client/builder/env/dev.json
+client/builder/env/prod.json
 
 client/public/index.html
 client/public/index.js

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "React Redux Webpack Boilerplate",
-  "description": "My current boilerplate",
+  "description": "Our current boilerplate",
   "version": "0117.0",
   "browser_action": {
     "default_icon": "img/fav/64.png",

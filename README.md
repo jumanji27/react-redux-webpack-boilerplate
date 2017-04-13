@@ -1,4 +1,4 @@
-### My Current Boilerplate
+### Our Current Boilerplate
 
 NodeJS 6.0.0 / NPM 3.8.6
 
@@ -21,4 +21,4 @@ Production:
 
 Docker
 
-    docker build -t dealer-front -f env/Dockerfile .
+    docker build -t react-redux-webpack-boilerplate -f env/Dockerfile .
