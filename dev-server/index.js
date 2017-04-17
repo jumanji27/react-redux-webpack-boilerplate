@@ -8,6 +8,8 @@ const app = express();
 
 
 app.post('/api/v1/entity', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   setTimeout(() => {
     res.send(entity);
   }, 300);
