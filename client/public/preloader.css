@@ -1,0 +1,185 @@
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.root {
+  height: 100%;
+}
+
+.limiter {
+  height: 100%;
+  max-width: 76.8rem;
+  margin: 0 auto;
+}
+
+.app {
+  height: 100%;
+}
+
+.header-spacer {
+  height: 4.6rem;
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  height: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.header__inner {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 1.425rem 0;
+}
+
+.header-logo {
+  display: inline-block;
+  text-indent: -9999px;
+  background: url('/cabinet/img/logo.png');
+  width: 8.7rem;
+  height: 1.75rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.breadcumbs {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.breadcumbs__arrow {
+  width: 0.95rem;
+  height: 1.7rem;
+  margin-right: 1.6rem;
+
+  path {
+    fill: #7f8c8d;
+  }
+}
+
+.breadcumbs__route {
+  font-size: 1.5rem;
+}
+
+.burger-menu {
+  transition: all .25s;
+  position: relative;
+  width: 2rem;
+  height: 1.65rem;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.b-a, .burger, .burger:before, .burger:after {
+  transition: all .25s;
+  content: "";
+  position: absolute;
+  left: 0;
+  height: .25rem;
+  width: 2rem;
+  border-radius: 1.5rem;
+  background-color: #7f8c8d;
+}
+
+.burger {
+  position: absolute;
+  top: 0.825rem;
+}
+
+.burger:before {
+  top: -8px;
+}
+
+.burger:after {
+  top: 8px;
+}
+
+.burger-menu_expanded .burger {
+  background-color: transparent;
+  transition: all .25s;
+}
+
+.burger-menu_expanded .burger:before {
+  transform: rotate(45deg);
+}
+
+.burger-menu_expanded .burger:after {
+  transform: rotate(-45deg);
+}
+
+.burger-menu_expanded .burger:before, .burger-menu_expanded .burger:after {
+  transition: all .25s;
+  top: -0px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #edeff5;
+}
+
+.loader .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border: 8px solid #209b55;
+  border-right-color: transparent;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  animation: spinner-rotate 1s linear infinite;
+}
+
+.loader .spinner&:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 33px;
+  width: 8px;
+  height: 8px;
+  background: #209b55;
+  border-radius: 50%;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
