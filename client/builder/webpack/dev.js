@@ -10,7 +10,7 @@ module.exports = {
 
   output: {
     path: '/',
-    filename: '/index.js',
+    filename: 'index.js',
     publicPath: '',
   },
 
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [
@@ -32,32 +32,28 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js|.jsx$/,
-        loaders: ['babel'],
+        use: ['babel-loader'],
         include: path.resolve(__dirname, '../../src'),
         exclude: /node_modules/,
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-      {
         test: /\.css$/,
-        loaders: [
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
-          'less',
+        use: [
+          'style-loader',
+          'css-loader?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
+          'less-loader',
         ]
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline',
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.png$/,

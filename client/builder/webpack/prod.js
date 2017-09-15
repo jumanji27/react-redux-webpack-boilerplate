@@ -17,7 +17,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [
@@ -29,36 +29,43 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new ExtractTextPlugin('index.css'),
+    new ExtractTextPlugin({
+      filename: "index.css",
+    }),
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js|.jsx$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.resolve(__dirname, '../../src'),
         exclude: /node_modules/,
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-      {
         test: /\.css$/,
         loader:
-          ExtractTextPlugin.extract(
-            'style',
-            [
-              'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]&-minimize',
-              'postcss',
-              'less',
+          ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              'css-loader?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]&-minimize',
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: () => [
+                    autoprefixer({
+                      browsers: 'last 5 versions',
+                    }),
+                  ]
+                }
+              },
+              'less-loader',
             ]
-          )
+          })
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline',
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.png$/,
@@ -70,10 +77,4 @@ module.exports = {
       }
     ]
   },
-
-  postcss: () => [
-    autoprefixer({
-      browsers: 'last 5 versions',
-    }),
-  ],
 };
