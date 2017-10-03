@@ -9,7 +9,7 @@ RUN mkdir /root/react-redux-webpack-boilerplate
 ADD . /root/react-redux-webpack-boilerplate
 
 RUN apt-get update -y
-RUN apt-get install -y curl
+RUN apt-get install -y curl gnupg2
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
 RUN apt-get install -y nodejs
 
@@ -19,5 +19,6 @@ RUN cd /root/react-redux-webpack-boilerplate/client/builder/env && cp dev.json.e
   && cp prod.json.example prod.json
 RUN cd /root/react-redux-webpack-boilerplate && yarn install && yarn build
 RUN cp -r /root/react-redux-webpack-boilerplate/client/public/* /usr/share/nginx/html
+RUN rm -rf /root/react-redux-webpack-boilerplate/
 
 EXPOSE 80

@@ -18,3 +18,8 @@ Dev server:
 Production:
 
     yarn build
+
+Docker
+
+    docker build -t react-redux-webpack-boilerplate -f env/Dockerfile .
+    docker run -it -d -p 8080:80 <id>
