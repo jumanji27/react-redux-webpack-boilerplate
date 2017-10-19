@@ -19,7 +19,12 @@ Production:
 
     yarn build
 
-Docker
+Deploy and Docker build (with Python3):
+
+    python3 env/deploy.py <branches> <release notes>
+
+    # Example:
+    python3 env/deploy.py A-1,B-2 bug\ fixes\ and\ new\ bugs
 
     docker build -t react-redux-webpack-boilerplate -f env/Dockerfile .
     docker run -it -d -p 8080:80 <id>
