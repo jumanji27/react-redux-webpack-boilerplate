@@ -57,6 +57,7 @@ class Deploy(cli.Application):
             git['add', '-A', '.'] & FG
             git['commit', '-m', 'release and version autobump'] & FG
             git['tag', version, '-m', message] & FG
+            git['push'] & FG
             git['push', '--tags'] & FG
 
             print('')
