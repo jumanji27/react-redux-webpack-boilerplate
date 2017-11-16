@@ -13,7 +13,7 @@ RUN apt-get install -y curl gnupg2
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
 RUN apt-get install -y nodejs
 
-RUN npm install -g yarn@0.17.2 cross-env@5.0.0
+RUN npm install -g yarn@1.1.0 cross-env@5.0.0
 
 RUN cd /root/react-redux-webpack-boilerplate/builder/env && cp dev.json.example dev.json \
   && cp prod.json.example prod.json
