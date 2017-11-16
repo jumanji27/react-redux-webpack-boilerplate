@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    './client/src/layout/index.jsx',
+    './src/layout/index.jsx',
   ],
 
   output: {
@@ -22,7 +22,7 @@ module.exports = {
 
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, '../../../client/src/layout/index.html'),
+      template: path.resolve(__dirname, '../../src/layout/index.html'),
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -30,7 +30,7 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin({
-      filename: "index.css",
+      filename: 'index.css',
     }),
   ],
 
@@ -56,12 +56,12 @@ module.exports = {
                     autoprefixer({
                       browsers: 'last 5 versions',
                     }),
-                  ]
-                }
+                  ],
+                },
               },
               'less-loader',
-            ]
-          })
+            ],
+          }),
       },
       {
         test: /\.svg$/,
@@ -74,7 +74,7 @@ module.exports = {
       {
         test: /vendor[\\|/].+\.(js)$/,
         loader: 'imports?jQuery=jquery,$=jquery,this=>window',
-      }
-    ]
+      },
+    ],
   },
 };

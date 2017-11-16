@@ -1,5 +1,3 @@
-client/builder
-
-client/public
-
+builder
+public
 dev-server

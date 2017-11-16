@@ -30,7 +30,7 @@ class Deploy(cli.Application):
             )
             version = None
 
-            MANIFEST = 'client/public/manifest.json'
+            MANIFEST = 'public/manifest.json'
 
             with open(MANIFEST, 'r') as manifest_json:
                 manifest = json.load(manifest_json)

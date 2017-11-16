@@ -4,12 +4,12 @@ NodeJS 8.4.0 / NPM 5.4.1
 
 Install deps:
 
-    npm install -g yarn@0.17.2 cross-env@5.0.0
+    npm install -g yarn@1.1.0 cross-env@5.0.0
     yarn install
 
-Create all (it's important) env configs (client/builder/env) from examples
+Create all (it's important) env configs (builder/env) from examples
 
-    cd client/builder/env && cp dev.json.example dev.json && cp prod.json.example prod.json
+    cd builder/env && cp dev.json.example dev.json && cp prod.json.example prod.json
 
 Dev server:
 

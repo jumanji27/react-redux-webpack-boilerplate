@@ -15,10 +15,10 @@ RUN apt-get install -y nodejs
 
 RUN npm install -g yarn@0.17.2 cross-env@5.0.0
 
-RUN cd /root/react-redux-webpack-boilerplate/client/builder/env && cp dev.json.example dev.json \
+RUN cd /root/react-redux-webpack-boilerplate/builder/env && cp dev.json.example dev.json \
   && cp prod.json.example prod.json
 RUN cd /root/react-redux-webpack-boilerplate && yarn install && yarn build
-RUN cp -r /root/react-redux-webpack-boilerplate/client/public/* /usr/share/nginx/html
+RUN cp -r /root/react-redux-webpack-boilerplate/public/* /usr/share/nginx/html
 RUN rm -rf /root/react-redux-webpack-boilerplate/
 
 EXPOSE 80

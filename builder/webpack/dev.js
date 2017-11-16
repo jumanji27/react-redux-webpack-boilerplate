@@ -5,7 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './client/src/layout/index.jsx'
+    './src/layout/index.jsx',
   ],
 
   output: {
@@ -15,8 +15,8 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: './client/public/',
-    historyApiFallback: true
+    contentBase: './public/',
+    historyApiFallback: true,
   },
 
   resolve: {
@@ -25,7 +25,7 @@ module.exports = {
 
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, '../../../client/src/layout/index.html'),
+      template: path.resolve(__dirname, '../../src/layout/index.html'),
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -49,7 +49,7 @@ module.exports = {
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
           'less-loader',
-        ]
+        ],
       },
       {
         test: /\.svg$/,
