@@ -1,6 +1,6 @@
 FROM nginx
 
-ADD env/nginx.conf /etc/nginx/nginx.conf
+ADD system/nginx.conf /etc/nginx/nginx.conf
 RUN sed -i -e 's|index  index.html index.htm;|try_files $uri /index.html;|g' /etc/nginx/conf.d/default.conf
 
 RUN rm -rf /usr/share/nginx/html/*
