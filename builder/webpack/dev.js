@@ -61,7 +61,7 @@ module.exports = {
       },
       {
         test: /vendor[\\|/].+\.(js)$/,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window',
+        loader: 'imports-loader?jQuery=jquery,$=jquery,this=>window',
       }
     ],
   },

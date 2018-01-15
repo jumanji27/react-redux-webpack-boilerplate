@@ -1,3 +1,5 @@
+import JSCookies from 'js-cookie';
+
 import devConfig from '../../builder/env/dev.json';
 import prodConfig from '../../builder/env/prod.json';
 
@@ -43,62 +45,80 @@ export default class Helpers {
   }
 
   static getLS(name) {
-    const data = localStorage.getItem(`${LS_PREFIX + name}`);
+    const now = Date.now();
+    const key = `${LS_PREFIX + name}`;
 
-    if (typeof data === 'string') {
-      return data;
+    const expire = localStorage.getItem(`${key}-expire`);
+
+    if (expire && expire < now) {
+      Helpers.deleteLS(key);
+      Helpers.deleteLS(`${key}-expire`);
+    } else {
+      const data = localStorage.getItem(key);
+
+      if (data) {
+        if (data === '{}') return;
+
+        // Naive object/array check
+        if (
+          (data.indexOf('{') >= 0 && data.indexOf('}') >= 0)
+            || (data.indexOf('[') >= 0 && data.indexOf(']') >= 0)
+        ) {
+          return JSON.parse(data);
+        }
+
+        return data;
+      }
     }
-
-    return JSON.parse(data);
   }
 
-  static setLS(name, value, params) {
-    if (params && params.rewrite) {
-      localStorage.setItem(
-        `${LS_PREFIX + name}`,
-        JSON.stringify(value),
-      );
-    } else {
-      let currentData =
-        Helpers.getLS(
-          `${LS_PREFIX + name}`,
-        );
+  static setLS(name, value, expires) {
+    const key = `${LS_PREFIX + name}`;
 
-      if (!currentData) {
-        currentData = {};
-      }
+    if (typeof value === 'object') {
+      value = JSON.stringify(value);
+    }
 
-      let data;
+    localStorage.setItem(key, value);
 
-      if (typeof value === 'string') {
-        data = value;
-      } else if (typeof currentData === 'string') {
-        data = JSON.stringify(value);
-      } else {
-        data =
-          JSON.stringify(
-            Object.assign(currentData, value),
-          );
-      }
+    if (expires) {
+      const now = Date.now();
 
       localStorage.setItem(
-        `${LS_PREFIX + name}`,
-        data,
+        `${key}_expire`,
+        now + (expires * 1000),
       );
     }
   }
 
   static deleteLS(name) {
-    localStorage.setItem(`${LS_PREFIX + name}${name}`, '');
+    const key = `${LS_PREFIX + name}`;
+
+    localStorage.removeItem(key);
+    localStorage.removeItem(`${key}_expire`);
   }
 
   static getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
+    return JSCookies.get(name);
+  }
 
-    if (parts.length === 2) {
-      return parts.pop().split(';').shift();
-    }
+  static setCookie(name, value, params) {
+    JSCookies.set(name, value, params);
+  }
+
+  static deleteCookie(name, params) {
+    JSCookies.remove(name, params);
+  }
+
+  static deleteAllCookies() {
+    document
+      .cookie
+      .split(';')
+      .forEach((cookie) => {
+        Helpers.deleteCookie(
+          cookie.split('=')[0],
+        );
+      });
   }
 
   static getEnv() {
