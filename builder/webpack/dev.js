@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: '/',
     filename: 'index.js',
-    publicPath: '',
+    publicPath: '/',
   },
 
   devServer: {
